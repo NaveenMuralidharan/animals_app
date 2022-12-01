@@ -8,16 +8,22 @@
     </nav>
     <article>
         <h2> <%= animal.species %> </h2>
+        <p>Location: <%= animal.location %> </p>
+        <p>Life expectancy: <%= animal.lifeExpectancy %> </p>
                 <% if(!animal.extinct) { %>
                     <p>This species is not extinct!</p>
                 <%  } else { %>
                     <p>This species is extinct!</p>
                 <%  }  %>
+
          
             <a href="/animals/<%=animal._id %>/edit">
                 Edit
-            </a>        
-        
+            </a>
+            <form action="/animals/<%= animal._id %>?_method=DELETE" method="POST">
+                <input type="submit" value="Delete">
+            </form>        
+            
     </article>
 
 

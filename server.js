@@ -56,6 +56,25 @@ app.get("/animals", (req, res)=>{
 
 })
 
+// NEW route
+app.get("/animals/new", (req, res)=>{
+    res.render("new.ejs")
+})
+
+// CREATE route
+app.post("/animals", (req, res)=>{
+    
+    // set checkbox value to boolean
+    
+    req.body.extinct = req.body.extinct === "on" ? true : false
+    
+    // create new animal
+    Animal.create(req.body, (err, data)=>{
+        res.redirect("/animals")
+    })
+
+})
+
 // EDIT route
 app.get("/animals/:id/edit", (req, res)=>{
     
@@ -65,6 +84,28 @@ app.get("/animals/:id/edit", (req, res)=>{
         res.render("edit.ejs", { animal: data })
     })
     
+})
+// UPDATE route
+app.put("/animals/:id", (req, res)=>{
+    // change checkbox value to boolean
+    
+    req.body.extinct = req.body.extinct === "on" ? true : false
+    
+    Animal.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, data)=>{
+        console.log(data)
+        res.redirect(`/animals/${req.params.id}`)
+    })
+
+})
+
+// DELETE route
+app.delete("/animals/:id", (req, res)=>{
+    
+    // findby id and delete
+    Animal.findByIdAndDelete(req.params.id, (err, data)=>{
+            // redirect index
+        res.redirect("/animals")
+    })
 })
 
 

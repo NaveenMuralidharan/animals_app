@@ -9,11 +9,13 @@
     <article>
         <h2> Edit <%= animal.species %> </h2>
        
-       <form action="/" method="POST">
+       <form action="/animals/<%= animal._id %>?_method=PUT" method="POST">
 
-        <input type="text" name="species" value="<%= animal.species %>">
-        <input type="text" name="location" value="<%= animal.location %>">
-        <!-- <input type="checkbox" name="" value=""> -->
+        Species: <input type="text" name="species" value="<%= animal.species %>">
+        Location: <input type="text" name="location" value="<%= animal.location %>">
+        Extinct?: <input type="checkbox" name="extinct" <%= animal.extinct ? "checked" : " " %> >
+        Life expectancy: <input type="number" name="lifeExpectancy" value="<%= animal.lifeExpectancy %>">
+       
 
         <input type="submit" value="Edit animal">
        </form>
