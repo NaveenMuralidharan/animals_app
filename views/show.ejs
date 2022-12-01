@@ -8,12 +8,16 @@
     </nav>
     <article>
         <h2> <%= animal.species %> </h2>
-        <% if(!animal.extinct) { %>
-            <p>This species is not extinct!</p>
-        <%  } else { %>
-            <p>This species is extinct!</p>
-        <%  }  %>
-        <button>Edit</button>
+                <% if(!animal.extinct) { %>
+                    <p>This species is not extinct!</p>
+                <%  } else { %>
+                    <p>This species is extinct!</p>
+                <%  }  %>
+         
+            <a href="/animals/<%=animal._id %>/edit">
+                Edit
+            </a>        
+        
     </article>
 
 

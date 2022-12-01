@@ -56,6 +56,18 @@ app.get("/animals", (req, res)=>{
 
 })
 
+// EDIT route
+app.get("/animals/:id/edit", (req, res)=>{
+    
+    console.log("req params id is "+ req.params.id)
+
+    Animal.findById(req.params.id, (err, data)=>{
+        res.render("edit.ejs", { animal: data })
+    })
+    
+})
+
+
 // Show route
 app.get("/animals/:id", (req, res)=>{
     
