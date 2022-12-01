@@ -48,7 +48,23 @@ app.get("/seed", (req, res)=>{
 })
 
 // Index route
+app.get("/animals", (req, res)=>{
 
+    Animal.find({}, (err, data)=>{
+        res.render("index.ejs", { animals: data })
+    })
+
+})
+
+// Show route
+app.get("/animals/:id", (req, res)=>{
+    
+    // find the animal by id 
+    Animal.findById(req.params.id, (err, data)=>{
+        res.render("show.ejs", { animal : data })
+    })
+
+})
 
 app.listen(PORT, ()=>{
     console.log("App is running on PORT "+ PORT)

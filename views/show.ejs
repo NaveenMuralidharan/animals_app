@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <nav>
+        <a href="/animals">Back</a>
+    </nav>
+    <article>
+        <h2> <%= animal.species %> </h2>
+        <% if(!animal.extinct) { %>
+            <p>This species is not extinct!</p>
+        <%  } else { %>
+            <p>This species is extinct!</p>
+        <%  }  %>
+        <button>Edit</button>
+    </article>
+
+
+</body>
+</html>

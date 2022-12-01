@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("./partials/head.ejs") %>
+
+<body>
+    <%- include("./partials/header.ejs") %>
+    
+    <main>
+
+        <div>
+            <% animals.forEach((animal)=>{ %>
+                <article>
+                    <a href="/animals/<%=animal._id%>"> <%= animal.species %> </a>
+                    <br>
+                    From: <%= animal.location %>
+                </article>
+            <% }) %>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
